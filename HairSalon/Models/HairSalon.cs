@@ -97,6 +97,30 @@ namespace HairSalon.Models
                 return (nameEquality);
             }
         }
+
+        public static List<StylistClass> FindById(int id)
+        {
+            List<StylistClass> stylistList = new List<StylistClass> {};
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM stylists WHERE id = " + id + ";";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while(rdr.Read())
+            {
+                int idz = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+                StylistClass newStylist = new StylistClass(idz, name);
+                stylistList.Add(newStylist);
+                
+            }
+            conn.Close();
+            if (conn !=null)
+            {
+                conn.Dispose();
+            }
+            return stylistList;
+        }
     }
 
     public class ClientClass
@@ -200,6 +224,31 @@ namespace HairSalon.Models
                 bool nameEquality = (this.GetName() == newClient.GetName());
                 return (nameEquality);
             }
+        }
+
+        public static List<ClientClass> GetAllClientsByStylistId(int id)
+        {
+            List<ClientClass> allClients = new List<ClientClass> {};
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = " + id + ";";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while(rdr.Read())
+            {
+                int idz = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+                int stylist_id = rdr.GetInt32(2);
+                ClientClass newClient = new ClientClass(idz, name, stylist_id);
+                allClients.Add(newClient);
+                
+            }
+            conn.Close();
+            if (conn !=null)
+            {
+                conn.Dispose();
+            }
+            return allClients;
         }
     }
 }
