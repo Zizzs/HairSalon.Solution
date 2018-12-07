@@ -1,0 +1,22 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <p>Add a Client</p>
+    <form action = "/stylists/clients/new" method="post">
+            <label for='clientName'>Client Name</label>
+            <input id='clientName' name='clientName' type='text' required><br>
+            <label for='stylistId'>Client's Stylist</label>
+            <select name='stylistId'>
+                @foreach(StylistClass stylist in @Model)
+                {
+                    <option name='stylistId' value=@stylist.GetId()>@stylist.GetName()</option>
+                }
+            </select>
+            <button type='submit'>Add Client To Database</button>
+    </form>
+    <br>
+    <a href="/stylists">Home</a>
+</div>

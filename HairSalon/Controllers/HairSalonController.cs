@@ -16,16 +16,32 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/new")]
         public ActionResult New()
         {
-            return View();
+            return View("NewStylist");
         }
 
         [HttpPost("/stylists/new")]
-        public ActionResult Create(string stylistName)
+        public ActionResult CreateStylist(string stylistName)
         {
             StylistClass stylist = new StylistClass(stylistName);
             stylist.Save();
             List<StylistClass> allStylists = StylistClass.GetAll();
             return View("Index", allStylists);
+        }
+
+        [HttpGet("/stylists/clients/new")]
+        public ActionResult Show()
+        {
+            List<StylistClass> allStylists = StylistClass.GetAll();
+            return View("NewClient", allStylists);
+        }
+
+        [HttpPost("/stylists/clients/new")]
+        public ActionResult CreateClient(string clientName, int stylistId)
+        {
+            ClientClass client = new ClientClass(clientName, stylistId);
+            client.Save();
+            List<ClientClass> allClients = ClientClass.GetAll();
+            return View("Index", allClients);
         }
     }
 }
