@@ -9,12 +9,16 @@
             <label for='clientName'>Client Name</label>
             <input id='clientName' name='clientName' type='text' required><br>
             <label for='stylistId'>Client's Stylist</label>
-            <select name='stylistId'>
+            <select name='stylistId' required>
                 @foreach(StylistClass stylist in @Model)
                 {
                     <option name='stylistId' value=@stylist.GetId()>@stylist.GetName()</option>
                 }
             </select>
+            @if (@Model.Count == 0)
+            {
+                <p id="noStylists">No Stylists in the System. Please add a Stylist First.</p>
+            }
             <button type='submit'>Add Client To Database</button>
     </form>
     <br>

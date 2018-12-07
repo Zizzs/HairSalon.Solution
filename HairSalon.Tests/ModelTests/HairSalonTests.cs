@@ -39,12 +39,13 @@ namespace HairSalon.Tests
         public void Save_SavesToDatabase_StylistList()
         {
             //Arrange
-            StylistClass testStylist = new StylistClass("Jimmy");
+            string name = "Jimmy";
+            StylistClass stylist = new StylistClass(name);
 
             //Act
-            testStylist.Save();
+            StylistClass.Save(name);
             List<StylistClass> result = StylistClass.GetAll();
-            List<StylistClass> testList = new List<StylistClass>{testStylist};
+            List<StylistClass> testList = new List<StylistClass>{stylist};
 
             //Assert
             CollectionAssert.AreEqual(testList, result);
