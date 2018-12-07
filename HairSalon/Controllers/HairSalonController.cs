@@ -79,7 +79,7 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/stylists/search")]
-        public ActionResult ShowClientSearch(int id)
+        public ActionResult ShowClientAndStylistSearch(int id)
         {
             return View("Search");
         }

@@ -100,5 +100,57 @@ namespace HairSalon.Tests
         //     //Assert
         //     Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
         // }
+
+        [TestMethod]
+        public void DeleteStylistAndStylistClients_ReturnsCorrectView_True()
+        {
+            //Arrange
+            HairSalonController controller = new HairSalonController();
+
+            //Act
+            ActionResult newView = controller.DeleteStylistAndStylistClients(0);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void DeleteClient_ReturnsCorrectView_True()
+        {
+            //Arrange
+            HairSalonController controller = new HairSalonController();
+
+            //Act
+            ActionResult newView = controller.DeleteClient(0);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void ShowClient_ReturnsCorrectView_True()
+        {
+            //Arrange
+            HairSalonController controller = new HairSalonController();
+
+            //Act
+            ActionResult newView = controller.ShowClient(0);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void ShowClientAndStylistSearch_ReturnsCorrectView_True()
+        {
+            //Arrange
+            HairSalonController controller = new HairSalonController();
+
+            //Act
+            ActionResult newView = controller.ShowClientAndStylistSearch(0);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
     }
 }
