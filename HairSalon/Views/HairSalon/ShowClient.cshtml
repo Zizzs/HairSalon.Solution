@@ -1,0 +1,13 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Hair Salon</h3>
+    <h2>@Model[0].GetName()</h2>
+    <a class="deleteLink" href='/stylists/clients/@Model[0].GetId()/delete'>Delete this Client</a>
+    <p>Client's Stylist: <a href="/stylists/@Model[0].GetStylistId()">@StylistClass.FindById(@Model[0].GetStylistId())[0].GetName()</a></p>
+    <br>
+    <a href="/stylists">Home Page</a>
+</div>

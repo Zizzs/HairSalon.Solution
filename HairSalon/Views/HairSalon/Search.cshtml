@@ -1,0 +1,16 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Hair Salon</h3>
+    <br>
+    <form action ="/stylists/search/stylist" method="post">
+            <label for='stylistName'>Stylist Name</label>
+            <input id='stylistName' name='stylistName' type='text' required><br>
+            <button type='submit'>Search For Stylist</button>
+    </form>
+    <a href="/stylists">Home Page</a>
+    
+</div>

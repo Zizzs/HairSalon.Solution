@@ -61,7 +61,27 @@ namespace HairSalon.Controllers
         {
             ClientClass.DeleteClientsByStylistId(id);
             StylistClass.Delete(id);
-            return View("Delete");
+            return View("DeleteStylist");
+        }
+
+        [HttpGet("/stylists/clients/{id}/delete")]
+        public ActionResult DeleteClient(int id)
+        {
+            ClientClass.Delete(id);
+            return View("DeleteClient");
+        }
+
+        [HttpGet("/stylists/clients/{id}")]
+        public ActionResult ShowClient(int id)
+        {
+            List<ClientClass> client = ClientClass.GetClientsById(id);
+            return View("ShowClient", client);
+        }
+
+        [HttpGet("/stylists/search")]
+        public ActionResult ShowClientSearch(int id)
+        {
+            return View("Search");
         }
     }
 }

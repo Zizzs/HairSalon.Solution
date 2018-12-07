@@ -268,6 +268,31 @@ namespace HairSalon.Models
             return allClients;
         }
 
+        public static List<ClientClass> GetClientsById(int id)
+        {
+            List<ClientClass> allClients = new List<ClientClass> {};
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients WHERE id = " + id + ";";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while(rdr.Read())
+            {
+                int idz = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+                int stylist_id = rdr.GetInt32(2);
+                ClientClass newClient = new ClientClass(idz, name, stylist_id);
+                allClients.Add(newClient);
+                
+            }
+            conn.Close();
+            if (conn !=null)
+            {
+                conn.Dispose();
+            }
+            return allClients;
+        }
+
         public static void DeleteClientsByStylistId(int id)
         {
             MySqlConnection conn = DB.Connection();
@@ -275,6 +300,23 @@ namespace HairSalon.Models
 
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"DELETE FROM clients WHERE stylist_id = " + id + ";";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static void Delete(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients WHERE id = " + id + ";";
 
             cmd.ExecuteNonQuery();
 

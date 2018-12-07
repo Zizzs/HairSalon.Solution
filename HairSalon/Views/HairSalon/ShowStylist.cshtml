@@ -10,7 +10,7 @@
     <h3>Current Clients:</h3>
     @foreach(ClientClass client in @Model["clients"])
     {
-        <p>@Model["clients"][0].GetName()</p>
+        <p><a href="/stylists/clients/@client.GetId()">@client.GetName()</a></p>
     }
     <br>
     <a href="/stylists">Home Page</a>
