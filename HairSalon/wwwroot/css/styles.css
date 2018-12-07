@@ -15,7 +15,7 @@ body
     color: white;
 }
 
-button , input
+button , input , select , option
 {
     color: black;
 }
