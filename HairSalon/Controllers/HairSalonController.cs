@@ -9,14 +9,14 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists")]
         public ActionResult Index()
         {
-            return View();
+            List<StylistClass> allStylists = StylistClass.GetAll();
+            return View(allStylists);
         }
 
         [HttpGet("/stylists/new")]
         public ActionResult New()
         {
-            List<StylistClass> allStylists = StylistClass.GetAll();
-            return View(allStylists);
+            return View();
         }
 
         [HttpPost("/stylists/new")]
