@@ -122,6 +122,34 @@ namespace HairSalon.Models
             return stylistList;
         }
 
+        //Something is wrong with this Search Method. Can't figure it out. Abandoning it for now, will ask about it later.
+        public static StylistClass FindByName(string name)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM stylists WHERE name = @thisName;";
+            MySqlParameter thisName = new MySqlParameter();
+            thisName.ParameterName = "@thisName";
+            thisName.Value = name;
+            cmd.Parameters.Add(thisName);
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            int idz = 0;
+            string namez = "";
+            while(rdr.Read())
+            {
+                idz = rdr.GetInt32(0);
+                namez = rdr.GetString(1);
+            }
+            StylistClass foundItem = new StylistClass(idz, namez);
+            conn.Close();
+            if (conn !=null)
+            {
+                conn.Dispose();
+            }
+            return foundItem;
+        }
+
         public static void Delete(int id)
         {
             MySqlConnection conn = DB.Connection();

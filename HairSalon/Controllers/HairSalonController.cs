@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
+using System;
 
 namespace HairSalon.Controllers
 {
@@ -82,6 +83,20 @@ namespace HairSalon.Controllers
         public ActionResult ShowClientAndStylistSearch(int id)
         {
             return View("Search");
+        }
+
+        [HttpPost("/stylists/search/stylist")]
+        public ActionResult SearchStylist(string name)
+        {
+            Dictionary<string, object> allInfo = new Dictionary<string, object>();
+            List<StylistClass> stylistList = new List<StylistClass>() {};
+            StylistClass stylist = StylistClass.FindByName(name);
+            List<ClientClass> clientList = ClientClass.GetAllClientsByStylistId(stylist.GetId());
+            Console.WriteLine(stylist.GetName());
+            stylistList.Add(stylist);
+            allInfo.Add("stylists", stylistList);
+            allInfo.Add("clients", clientList);
+            return View("ShowStylist", allInfo);
         }
     }
 }
