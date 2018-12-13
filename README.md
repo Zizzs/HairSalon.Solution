@@ -8,6 +8,13 @@
 
 _This website allows the user to input Stylists into the website, and then adding clients to that stylist. In addition, the user may view each stylist and client and see their respective stylists(if the user chose a client), and the respective clients(if the user chose a stylist). The user may also delete Stylists and Clients from the database._
 
+## Specs
+
+1. User can add both Stylists and Clients to the database.
+2. User should then be able to add the clients as a many to one relationship within the database, allowing for the Client to be paired with a Stylist.
+3. User can then view Clients, and their information and Stylists, and their clients.
+4. Clients and Stylists can both be deleted. When deleting a Stylist, the corresponding Clients will also be deleted automatically.
+
 ## Setup/Installation Requirements
 Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them. 
 
