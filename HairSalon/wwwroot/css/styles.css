@@ -54,7 +54,7 @@ a:hover
 
 a:active 
 {
-color: #984B43;
+    color: #984B43;
 }
 
 #mainPageDiv
@@ -98,4 +98,16 @@ color: #984B43;
 .star
 {
     width: 3%;
+}
+
+.nav-tabs > li > a:hover
+{
+    background-color: #984B43;
+    border-color: #EAC67A;
+}
+
+.nav-tabs > li
+{
+    border-bottom: 1px solid #EAC67A;
+    border-bottom-color: #EAC67A;
 }
