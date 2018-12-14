@@ -81,5 +81,19 @@ namespace HairSalon.Controllers
             StylistClass.UpdateName(id, stylistName);
             return RedirectToAction("Show", id);
         }
+
+        [HttpGet("/stylists/search")]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost("/stylists/searchstylist")]
+        public ActionResult Search(string stylistName)
+        {
+            StylistClass stylist = StylistClass.FindByName(stylistName);
+            int id = stylist.GetId();
+            return RedirectToAction("Show" , new {id});
+        }
     }
 }

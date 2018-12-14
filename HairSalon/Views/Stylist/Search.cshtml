@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <br>
+    <p>Search for a Stylist By Name:</p>
+    <form action = "/stylists/searchstylist" method="post">
+            <label for='stylistName'>Stylist Name</label>
+            <input id='stylistName' name='stylistName' type='text' required><br>
+            <button type='submit'>Search for Stylist</button>
+    </form>
+    <br>
+    <p>Search for a Client By Name:</p>
+    <form action = "/stylists/searchclient" method="post">
+            <label for='clientName'>Client Name</label>
+            <input id='clientName' name='clientName' type='text' required><br>
+            <button type='submit'>Search for Client</button>
+    </form>
+    <br>
+    <p>Search for a Speciality By Name:</p>
+    <form action = "/stylists/searchspeciality" method="post">
+            <label for='specialityName'>Speciality</label>
+            <input id='specialityName' name='specialityName' type='text' required><br>
+            <button type='submit'>Search for Speciality</button>
+    </form>
+</div>

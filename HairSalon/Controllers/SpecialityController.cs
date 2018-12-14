@@ -73,5 +73,13 @@ namespace HairSalon.Controllers
             SpecialityClass.DeleteSpeciality(id);
             return View();
         }
+
+        [HttpPost("/stylists/searchspeciality")]
+        public ActionResult Search(string specialityName)
+        {
+            SpecialityClass speciality = SpecialityClass.FindBySpeciality(specialityName);
+            int id = speciality.GetId();
+            return RedirectToAction("Show" , new {id});
+        }
     }
 }

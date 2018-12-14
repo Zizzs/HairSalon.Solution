@@ -219,5 +219,30 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
         }
+
+        public static ClientClass FindByName(string name)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients WHERE name = '" + name + "';";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            int idz = 0;
+            string namez = "";
+            int stylist_id = 0;
+            while(rdr.Read())
+            {
+                idz = rdr.GetInt32(0);
+                namez = rdr.GetString(1);
+                stylist_id = rdr.GetInt32(2);
+            }
+            ClientClass foundItem = new ClientClass(idz, namez, stylist_id);
+            conn.Close();
+            if (conn !=null)
+            {
+                conn.Dispose();
+            }
+            return foundItem;
+        }
     }
 }
