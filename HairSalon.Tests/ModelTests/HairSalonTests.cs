@@ -355,5 +355,47 @@ namespace HairSalon.Tests
             //Assert
            Assert.AreEqual(speciality, specialities[0].GetSpeciality());
         }
+
+        [TestMethod]
+        public void ClearAll_Speciality_Speciality()
+        {
+            //Arrange
+            List<SpecialityClass> list = new List<SpecialityClass> {};
+            string speciality = "50s Style";
+            SpecialityClass.Save(speciality);
+            SpecialityClass.ClearAll();
+
+            //Act
+            List<SpecialityClass> specialities = SpecialityClass.GetAll();
+
+            //Assert
+           CollectionAssert.AreEqual(list, specialities);
+        }
+
+        [TestMethod]
+        public void SpecialityGetId_ReturnsId_Int()
+        {
+            //Arrange
+            SpecialityClass speciality = new SpecialityClass("Hair");
+
+            //Act
+            var newName = speciality.GetId();
+
+            //Assert
+            Assert.IsInstanceOfType(newName, typeof(int));
+        }
+
+        [TestMethod]
+        public void SpecialityGetName_ReturnsName_String()
+        {
+            //Arrange
+            SpecialityClass speciality = new SpecialityClass("Hair");
+
+            //Act
+            var newName = speciality.GetSpeciality();
+
+            //Assert
+            Assert.IsInstanceOfType(newName, typeof(string));
+        }
     }
 }
