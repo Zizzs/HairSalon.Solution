@@ -279,26 +279,5 @@ namespace HairSalon.Tests
             //Assert
            CollectionAssert.AreEqual(tempList, tempListThree);
         }
-
-        //Delete Test is Malfunctioning, 
-        // [TestMethod]
-        // public void Delete_DeletesClientById_ClientList()
-        // {
-        //     //Arrange
-        //     string name = "Jimmy";
-        //     List<ClientClass> tempList = new List<ClientClass> {};
-
-        //     //Act
-        //     StylistClass.Save(name);
-        //     List<StylistClass> tempListTwo = StylistClass.GetAll();
-        //     int id = tempListTwo[0].GetId();
-        //     ClientClass wanda = new ClientClass(name, id);
-        //     wanda.Save();
-        //     ClientClass.Delete(wanda.GetId());
-        //     List<ClientClass> tempListThree = ClientClass.GetAll();
-
-        //     //Assert
-        //    CollectionAssert.AreEqual(tempList, tempListThree);
-        // }
     }
 }
