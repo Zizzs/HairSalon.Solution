@@ -11,20 +11,22 @@
 
 body
 {
-    background-color: black;
-    color: white;
+    background-color: #18131E;
+    color: #EAC67A;
 }
 
 button , input , select , option
 {
-    color: black;
+    border-color: #984B43;
+    background-color: #233237;
+    color: #EAC67A;
 }
 
 hr
 {
-    background-color: white;
-    border-color: white;
-    color: white;
+    background-color: #984B43;
+    border-color: #984B43;
+    color: #984B43;
 }
 
 #mainHeader
@@ -32,4 +34,68 @@ hr
     text-align: center;
 }
 
+a:link 
+{
+    color: #984B43;
+}
+  
 
+a:visited 
+{
+    color: #984B43;
+}
+
+
+a:hover 
+{
+    color: #EAC67A;
+}
+
+
+a:active 
+{
+color: #984B43;
+}
+
+#mainPageDiv
+{
+    background-color: #233237;
+    border-radius: 15px;
+}
+
+#splashImg
+{
+    margin-left: 15%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.column
+{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.row::after
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#reviewDiv
+{
+    padding-top: 15px;
+    margin-top: 25px;
+}
+
+.starImg
+{
+    align-content: center;
+}
+
+.star
+{
+    width: 3%;
+}
