@@ -6,7 +6,12 @@
 <div class="container">
     <h3>Hair Salon</h3>
     <h2>@Model.GetName()</h2>
+    <a class="deleteLink" href='/stylists/clients/@Model.GetId()/edit'>Edit the Client</a>
+    <br>
+    <br>
     <a class="deleteLink" href='/stylists/clients/@Model.GetId()/delete'>Delete this Client</a>
+    <br>
+    <br>
     <p>Client's Stylist: <a href="/stylists/@Model.GetStylistId()">@StylistClass.FindById(@Model.GetStylistId()).GetName()</a></p>
     <br>
     <a href="/stylists/clients/showall">Back</a>

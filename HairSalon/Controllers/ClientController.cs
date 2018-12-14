@@ -49,5 +49,24 @@ namespace HairSalon.Controllers
             ClientClass.ClearAll();
             return RedirectToAction("ShowAll");
         }
+
+        [HttpGet("/stylists/clients/{id}/edit")]
+        public ActionResult Edit(int id)
+        {
+            Dictionary<string, object> allInfo = new Dictionary<string, object>();
+            ClientClass client = ClientClass.GetClientById(id);
+            List<StylistClass> stylists = StylistClass.GetAll();
+            allInfo.Add("client", client);
+            allInfo.Add("stylists", stylists);
+            return View("Update", allInfo);
+        }
+
+        [HttpPost("/stylists/clients/{id}/edit")]
+        public ActionResult Update(int id, string clientName, int stylistId)
+        {
+            ClientClass.UpdateName(id, clientName);
+            ClientClass.UpdateStylist(id, stylistId);
+            return RedirectToAction("Show", id);
+        }
     }
 }

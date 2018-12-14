@@ -1,0 +1,24 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <p>Change Client Information</p>
+    <form action = '/stylists/clients/@Model["client"].GetId()/edit' method="post">
+            <label for='clientName'>New Name</label>
+            <input id='clientName' name='clientName' type='text' required><br>
+            <label for='stylistId'>New Stylist</label>
+            <select name='stylistId' required>
+                @foreach(StylistClass stylist in @Model["stylists"])
+                {
+                    <option name='stylistId' value=@stylist.GetId()>@stylist.GetName()</option>
+                }
+            </select>
+            @if (@Model.Count == 0)
+            {
+                <p id="noStylists">No Stylists in the System. Please add a Stylist First.</p>
+            }
+            <button type='submit'>Update Client Information</button>
+    </form>
+</div>

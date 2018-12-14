@@ -292,5 +292,54 @@ namespace HairSalon.Tests
             //Assert
            Assert.AreEqual(nameTwo, nameThree);
         }
+
+        [TestMethod]
+        public void Update_EditsClientName_String()
+        {
+            //Arrange
+            string name = "Jimmy";
+            string nameTwo = "Jimbo";
+            StylistClass.Save(name);
+            StylistClass stylist = StylistClass.FindByName("Jimmy");
+            int stylistId = stylist.GetId();
+            ClientClass jimbo = new ClientClass(nameTwo, stylistId);
+            jimbo.Save();
+            string newClientName = "Harold";
+
+            //Act
+            List<ClientClass> newJimbo = ClientClass.GetAllClientsByStylistId(stylistId);
+            int clientId = newJimbo[0].GetId();
+            ClientClass.UpdateName(clientId, newClientName);
+            List<ClientClass> newJimboAgain = ClientClass.GetAllClientsByStylistId(stylistId);
+            //Assert
+           Assert.AreEqual(newJimboAgain[0].GetName(), newClientName);
+        }
+
+        [TestMethod]
+        public void Update_EditsClientStylist_String()
+        {
+            //Arrange
+            string name = "Jimmy";
+            string nameOne = "Sarah";
+            string nameTwo = "Jimbo";
+
+            StylistClass.Save(name);
+            StylistClass.Save(nameOne);
+            
+            StylistClass stylist = StylistClass.FindByName("Jimmy");
+            int stylistId = stylist.GetId();
+            ClientClass jimbo = new ClientClass(nameTwo, stylistId);
+            jimbo.Save();
+            StylistClass sarah = StylistClass.FindByName("Sarah");
+            int stylistTwoId = sarah.GetId();
+
+            //Act
+            List<ClientClass> newJimbo = ClientClass.GetAllClientsByStylistId(stylistId);
+            int clientId = newJimbo[0].GetId();
+            ClientClass.UpdateStylist(clientId, stylistTwoId);
+            List<ClientClass> newJimboAgain = ClientClass.GetAllClientsByStylistId(stylistTwoId);
+            //Assert
+           Assert.AreEqual(newJimboAgain[0].GetStylistId(), stylistTwoId);
+        }
     }
 }
