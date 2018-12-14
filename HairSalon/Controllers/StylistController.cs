@@ -60,10 +60,17 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/stylists/{id}/edit")]
-        public ActionResult Update(int id)
+        public ActionResult Edit(int id)
         {
-            StylistClass.FindById(id);
-            return RedirectToAction("Update", id);
+            StylistClass stylist = StylistClass.FindById(id);
+            return View("Update", stylist);
+        }
+
+        [HttpPost("/stylists/{id}/edit")]
+        public ActionResult Update(int id, string stylistName)
+        {
+            StylistClass.UpdateName(id, stylistName);
+            return RedirectToAction("Show", id);
         }
         // [HttpPost("/stylists/search/stylist")]
         // public ActionResult SearchStylist(string name)
