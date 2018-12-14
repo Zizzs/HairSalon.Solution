@@ -32,8 +32,10 @@ namespace HairSalon.Controllers
             Dictionary<string, object> allInfo = new Dictionary<string, object>();
             StylistClass stylist = StylistClass.FindById(id);
             List<ClientClass> clientList = ClientClass.GetAllClientsByStylistId(id);
+            List<SpecialityClass> specialities = SpecialityClass.GetAllSpecialitysByStylistId(id);
             allInfo.Add("stylists", stylist);
             allInfo.Add("clients", clientList);
+            allInfo.Add("specialities", specialities);
             return View(allInfo);
         }
 
