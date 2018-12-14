@@ -112,5 +112,18 @@ namespace HairSalon.Tests
             //Assert
             Assert.IsInstanceOfType(newView, typeof(RedirectToActionResult));
         }
+
+        [TestMethod]
+        public void Search_ReturnsCorrectView_True()
+        {
+            //Arrange
+            StylistController controller = new StylistController();
+
+            //Act
+            ActionResult newView = controller.Search("dog");
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(RedirectToActionResult));
+        }
     }
 }
