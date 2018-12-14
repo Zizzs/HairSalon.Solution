@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <p>Add a Speciality</p>
+    <form action = "/stylists/specialities/new" method="post">
+            <label for='speciality'>Type of Speciality</label>
+            <input id='speciality' name='speciality' type='text' required><br>
+            <button type='submit'>Add Speciality to Database</button>
+    </form>
+    <br>
+    <a href="/stylists">Home</a>
+</div>

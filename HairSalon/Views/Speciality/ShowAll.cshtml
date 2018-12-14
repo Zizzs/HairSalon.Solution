@@ -1,0 +1,14 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Current Specialities:</h3>
+    <div>
+    @foreach(SpecialityClass speciality in @Model)
+    {
+        <a href="/stylists/specialities/@speciality.GetId()">@speciality.GetSpeciality()</a><br>
+    }
+    </div>
+</div>

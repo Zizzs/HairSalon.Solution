@@ -341,5 +341,19 @@ namespace HairSalon.Tests
             //Assert
            Assert.AreEqual(newJimboAgain[0].GetStylistId(), stylistTwoId);
         }
+
+        [TestMethod]
+        public void SaveAndGetAll_Speciality_Speciality()
+        {
+            //Arrange
+            string speciality = "50s Style";
+            SpecialityClass.Save(speciality);
+
+            //Act
+            List<SpecialityClass> specialities = SpecialityClass.GetAll();
+
+            //Assert
+           Assert.AreEqual(speciality, specialities[0].GetSpeciality());
+        }
     }
 }
