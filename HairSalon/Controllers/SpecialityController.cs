@@ -45,5 +45,17 @@ namespace HairSalon.Controllers
             SpecialityClass.SaveSpecialtyToStylist(stylistId, specialityId);
             return RedirectToAction("Index", "Stylist");
         }
+
+        [HttpGet("/stylists/specialities/{id}")]
+        public ActionResult Show(int id)
+        {
+            Dictionary<string, object> allInfo = new Dictionary<string, object> {};
+            SpecialityClass speciality = SpecialityClass.FindBySpecialityId(id);
+            List<StylistClass> allStylists = StylistClass.GetAllStylistsBySpecialityId(id);
+            allInfo.Add("speciality", speciality);
+            allInfo.Add("stylists", allStylists);
+
+            return View(allInfo);
+        }
     }
 }

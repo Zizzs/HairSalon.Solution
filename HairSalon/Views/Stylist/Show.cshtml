@@ -11,7 +11,7 @@
     <h3>Specialities:</h3>
     @foreach(SpecialityClass speciality in @Model["specialities"])
     {
-        <p>@speciality.GetSpeciality()</p>
+        <p><a href="/stylists/specialities/@speciality.GetId()">@speciality.GetSpeciality()</a></p>
     }
     <h3>Current Clients:</h3>
     @foreach(ClientClass client in @Model["clients"])
