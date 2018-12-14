@@ -6,7 +6,7 @@
 
 ## Description
 
-_This website allows the user to input Stylists into the website, and then adding clients to that stylist. In addition, the user may view each stylist and client and see their respective stylists(if the user chose a client), and the respective clients(if the user chose a stylist). The user may also delete Stylists and Clients from the database._
+_This website allows the user to input Stylists, Clients, and Specialities. In addition, the user may view each stylist and client and see their respective stylists(if the user chose a client), and the respective clients(if the user chose a stylist). Specialties, once added, may be joined together with a Stylist. These can then be viewed as it's own page, showing which stylists use that speciality, or as a list of all specialities. Also, in addition to viewing the Stylists, Clients, and Specialties on their own pages, the user may search via Stylist/Client name or Specialty name to view the respective page. The user may also delete Stylists, Clients, and Specialities from the database._
 
 ## Specs
 
@@ -14,14 +14,13 @@ _This website allows the user to input Stylists into the website, and then addin
 2. User should then be able to add the clients as a many to one relationship within the database, allowing for the Client to be paired with a Stylist.
 3. The User can add many specialities to a stylist, and many stylists to one speciality as a many to many relationship.
 4. User can then view Singular/All Clients, Singular/All Stylists, and Singular/All Specialities.
-5. Clients and Stylists can both be deleted. When deleting a Stylist, the corresponding Clients will also be deleted automatically.
+5. Clients, Stylists and Specialities can all be deleted. When deleting a Stylist, the corresponding Clients will also be deleted automatically and when deleting Specialties, its corresponding link to the Stylist in the Join table is also deleted.
 
 ## Setup/Installation Requirements
 Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them. 
 
 1. Clone this repository:
-
-    * $git clone https://github.com/Zizzs/HairSalon.Solution
+    * > $git clone https://github.com/Zizzs/HairSalon.Solution
 2. Setup the Database. Either import the database files given OR create your own database using the following SQL Commands:
     * > CREATE DATABASE hair_salon;
     * > USE hair_salon;
