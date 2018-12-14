@@ -10,10 +10,11 @@ _This website allows the user to input Stylists into the website, and then addin
 
 ## Specs
 
-1. User can add both Stylists and Clients to the database.
+1. User can add Stylists, Clients and Specialities to the database.
 2. User should then be able to add the clients as a many to one relationship within the database, allowing for the Client to be paired with a Stylist.
-3. User can then view Clients, and their information and Stylists, and their clients.
-4. Clients and Stylists can both be deleted. When deleting a Stylist, the corresponding Clients will also be deleted automatically.
+3. The User can add many specialities to a stylist, and many stylists to one speciality as a many to many relationship.
+4. User can then view Singular/All Clients, Singular/All Stylists, and Singular/All Specialities.
+5. Clients and Stylists can both be deleted. When deleting a Stylist, the corresponding Clients will also be deleted automatically.
 
 ## Setup/Installation Requirements
 Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them. 
@@ -26,6 +27,15 @@ Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them.
     * > USE hair_salon;
     * > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));
     * > CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255)), stylist_id INT;
+    * > CREATE TABLE specialities (id serial PRIMARY KEY, speciality VARCHAR(255));
+    * > CREATE TABLE specialities_stylists (id serial PRIMARY KEY, speciality_id INT, stylist_id INT;
+
+    * > CREATE DATABASE hair_salon_test;
+    * > USE hair_salon_test;
+    * > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));
+    * > CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255)), stylist_id INT;
+    * > CREATE TABLE specialities (id serial PRIMARY KEY, speciality VARCHAR(255));
+    * > CREATE TABLE specialities_stylists (id serial PRIMARY KEY, speciality_id INT, stylist_id INT;
 3. Change into the work directory:
     * $cd HairSalon.Solution
 4. Open the project in your preferred text editor to modify the files.
@@ -36,7 +46,7 @@ _This application requires MAMP or a similar server program. Myphpadmin is optio
 
 ## Known Bugs
 
-_The current iteration of the Search feature only searches Stylists. But the FindByName search method is not working, so the search feature does not work._
+_No Known Bugs_
 
 ## Support and contact details
 

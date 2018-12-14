@@ -5,8 +5,11 @@
 
 <div class="container">
     <h3>@Model["speciality"].GetSpeciality()</h3>
+    <a href='/stylists/specialities/@Model["speciality"].GetId()/delete'>Delete</a>
+    <br>
+    <br>
     <div>
-    <p>All Clients With This Speciality:</p>
+    <p>All Stylists With This Speciality:</p>
     @foreach(StylistClass stylist in @Model["stylists"])
     {
         <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>

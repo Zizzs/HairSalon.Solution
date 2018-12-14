@@ -79,6 +79,20 @@ namespace HairSalon.Models
             }
         }
 
+        public static void ClearAllFromJoin()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialities_stylists;";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+            conn.Dispose();
+            }
+        }
+
         public static void SaveSpecialtyToStylist(int stylistId, int specialityId)
         {
             MySqlConnection conn = DB.Connection();
@@ -174,6 +188,40 @@ namespace HairSalon.Models
 
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"DELETE FROM specialities_stylists WHERE stylist_id = " + id + ";";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static void DeleteSpecialitysBySpecialitytId(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialities_stylists WHERE speciality_id = " + id + ";";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static void DeleteSpeciality(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialities WHERE id = " + id + ";";
 
             cmd.ExecuteNonQuery();
 

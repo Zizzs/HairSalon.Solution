@@ -57,5 +57,21 @@ namespace HairSalon.Controllers
 
             return View(allInfo);
         }
+
+        [HttpGet("/stylists/specialities/deleteall")]
+        public ActionResult DeleteAll()
+        {
+            SpecialityClass.ClearAll();
+            SpecialityClass.ClearAllFromJoin();
+            return RedirectToAction("Index", "Stylist");
+        }
+
+        [HttpGet("/stylists/specialities/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            SpecialityClass.DeleteSpecialitysBySpecialitytId(id);
+            SpecialityClass.DeleteSpeciality(id);
+            return View();
+        }
     }
 }
