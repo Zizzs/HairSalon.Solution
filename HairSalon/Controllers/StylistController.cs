@@ -72,24 +72,5 @@ namespace HairSalon.Controllers
             StylistClass.UpdateName(id, stylistName);
             return RedirectToAction("Show", id);
         }
-        // [HttpPost("/stylists/search/stylist")]
-        // public ActionResult SearchStylist(string name)
-        // {
-        //     Dictionary<string, object> allInfo = new Dictionary<string, object>();
-        //     List<StylistClass> stylistList = new List<StylistClass>() {};
-        //     StylistClass stylist = StylistClass.FindByName(name);
-        //     List<ClientClass> clientList = ClientClass.GetAllClientsByStylistId(stylist.GetId());
-        //     Console.WriteLine(stylist.GetName());
-        //     stylistList.Add(stylist);
-        //     allInfo.Add("stylists", stylistList);
-        //     allInfo.Add("clients", clientList);
-        //     return View("ShowStylist", allInfo);
-        // }
-
-        // [HttpGet("/stylists/search")]
-        // public ActionResult ShowClientAndStylistSearch(int id)
-        // {
-        //     return View("Search");
-        // } 
     }
 }

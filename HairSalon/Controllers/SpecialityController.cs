@@ -27,6 +27,23 @@ namespace HairSalon.Controllers
             return RedirectToAction("ShowAll");
         }
 
+        [HttpGet("/stylists/specialities/join")]
+        public ActionResult Join()
+        {
+            Dictionary<string, object> specialitiesStylists = new Dictionary<string, object> {};
+            List<StylistClass> stylists = StylistClass.GetAll();
+            List<SpecialityClass> specialities = SpecialityClass.GetAll();
+            specialitiesStylists.Add("stylists", stylists);
+            specialitiesStylists.Add("specialities", specialities);
+            
+            return View(specialitiesStylists);
+        }
 
+        [HttpPost("/stylists/specialities/join")]
+        public ActionResult JoinCreate(int stylistId, int specialityId)
+        {
+            SpecialityClass.SaveSpecialtyToStylist(stylistId, specialityId);
+            return RedirectToAction("Index", "Stylist");
+        }
     }
 }

@@ -1,0 +1,33 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <p>Add a Speciality to a Stylist</p>
+    <form action = "/stylists/specialities/join" method="post">
+        <select name='stylistId' required>
+            @foreach(StylistClass stylist in @Model["stylists"])
+            {
+                <option name='stylistId' value=@stylist.GetId()>@stylist.GetName()</option>
+            }
+        </select>
+        <select name='specialityId' required>
+            @foreach(SpecialityClass speciality in @Model["specialities"])
+            {
+                <option name='specialityId' value=@speciality.GetId()>@speciality.GetSpeciality()</option>
+            }
+        </select>
+        <button type='submit'>Add Stylist To Database</button>
+        @if (@Model["stylists"].Count == 0)
+        {
+            <p id="noStylists">No Stylists in the System. Please add a Stylist First.</p>
+        }
+        @if (@Model["specialities"].Count == 0)
+        {
+            <p id="noStylists">No Specialities in the System. Please add a Speciality First.</p>
+        }
+    </form>
+    <br>
+    <a href="/stylists">Home</a>
+</div>
