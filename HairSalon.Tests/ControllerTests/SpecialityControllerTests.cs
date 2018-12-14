@@ -60,5 +60,70 @@ namespace HairSalon.Tests
             //Assert
             Assert.IsInstanceOfType(newView, typeof(RedirectToActionResult));
         }
+
+        [TestMethod]
+        public void Join_ReturnsCorrectView_True()
+        {
+            //Arrange
+            SpecialityController controller = new SpecialityController();
+
+            //Act
+            ActionResult newView = controller.Join();
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void JoinCreate_ReturnsCorrectView_True()
+        {
+            //Arrange
+            SpecialityController controller = new SpecialityController();
+
+            //Act
+            ActionResult newView = controller.JoinCreate(1, 1);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(RedirectToActionResult));
+        }
+
+        [TestMethod]
+        public void Show_ReturnsCorrectView_True()
+        {
+            //Arrange
+            SpecialityController controller = new SpecialityController();
+
+            //Act
+            ActionResult newView = controller.Show(1);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void DeleteAll_ReturnsCorrectView_True()
+        {
+            //Arrange
+            SpecialityController controller = new SpecialityController();
+
+            //Act
+            ActionResult newView = controller.DeleteAll();
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(RedirectToActionResult));
+        }
+
+        [TestMethod]
+        public void Delete_ReturnsCorrectView_True()
+        {
+            //Arrange
+            SpecialityController controller = new SpecialityController();
+
+            //Act
+            ActionResult newView = controller.Delete(1);
+
+            //Assert
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
     }
 }
