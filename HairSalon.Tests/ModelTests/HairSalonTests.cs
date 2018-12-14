@@ -14,6 +14,7 @@ namespace HairSalon.Tests
         {
             StylistClass.ClearAll();
             ClientClass.ClearAll();
+            SpecialityClass.ClearAll();
         }
 
         
@@ -396,6 +397,28 @@ namespace HairSalon.Tests
 
             //Assert
             Assert.IsInstanceOfType(newName, typeof(string));
+        }
+
+        [TestMethod]
+        public void SaveSpecialityToStylistAndGetAllSpecialitiesByStylist_SavesAndGetsSpecialities_SpecialityClassList()
+        {
+            //Arrange
+            string name = "Jimmy";
+            StylistClass.Save(name);
+            string speciality = "Fancy Hair";
+            SpecialityClass.Save(speciality);
+            StylistClass stylist = StylistClass.FindByName("Jimmy");
+            int stylistId = stylist.GetId();
+            SpecialityClass specialityOne = SpecialityClass.FindBySpeciality("Fancy Hair");
+            int specialityId = specialityOne.GetId();
+            SpecialityClass.SaveSpecialtyToStylist(stylistId, specialityId);
+
+            //Act
+
+            List<SpecialityClass> specialityList = SpecialityClass.GetAllSpecialitysByStylistId(stylistId);
+            
+            //Assert
+            Assert.AreEqual(specialityOne.GetSpeciality(), specialityList[0].GetSpeciality());
         }
     }
 }
