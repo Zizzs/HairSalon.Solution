@@ -20,4 +20,11 @@ button , input , select , option
     color: black;
 }
 
+hr
+{
+    background-color: white;
+    border-color: white;
+    color: white;
+}
+
 

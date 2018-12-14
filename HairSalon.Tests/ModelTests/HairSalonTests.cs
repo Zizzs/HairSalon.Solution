@@ -94,20 +94,17 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void FindById_ReturnsStylistList_StylistList()
+        public void FindById_ReturnsStylistList_Stylist()
         {
             //Arrange
             string name = "Jimmy";
 
             //Act
             StylistClass.Save(name);
-            List<StylistClass> tempList = StylistClass.FindById(1);
+            StylistClass temp = StylistClass.FindById(1);
 
             StylistClass jimmy = new StylistClass("dog");
-            foreach(StylistClass stylist in tempList)
-            {
-                jimmy = stylist;
-            }
+            jimmy = temp;
 
             //Assert
            Assert.IsInstanceOfType(jimmy, typeof(StylistClass));
@@ -237,28 +234,25 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void GetClientsById_ReturnsClientList_ClientList()
+        public void GetClientsById_ReturnsClientList_Client()
         {
             //Arrange
             string name = "Jimmy";
 
             //Act
             StylistClass.Save(name);
-            List<StylistClass> jimbo = StylistClass.FindById(1);
+            StylistClass jimbo = StylistClass.FindById(1);
             int id = 0;
-            foreach(StylistClass stylist in jimbo)
-            {
-                id = stylist.GetId();
-            }
+            id = jimbo.GetId();
             ClientClass wanda = new ClientClass(name, id);
             wanda.Save();
             int idTwo = wanda.GetId();
-            var tempList = ClientClass.GetClientsById(idTwo);
+            var tempList = ClientClass.GetClientById(idTwo);
 
             var jimmy = tempList;
 
             //Assert
-           Assert.IsInstanceOfType(jimmy, typeof(List<ClientClass>));
+           Assert.IsInstanceOfType(jimmy, typeof(ClientClass));
         }
 
         [TestMethod]

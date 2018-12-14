@@ -1,0 +1,13 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <p>Change Stylist Name</p>
+    <form action = "/stylists/new" method="post">
+            <label for='stylistName'>New Name</label>
+            <input id='stylistName' name='stylistName' type='text' required><br>
+            <button type='submit'>Update Stylist Name</button>
+    </form>
+</div>

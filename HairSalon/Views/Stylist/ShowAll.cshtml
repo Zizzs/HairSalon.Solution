@@ -1,0 +1,21 @@
+@using HairSalon.Models
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Current Stylists:</h3>
+    <div>
+    
+    @foreach(StylistClass stylist in @Model)
+    {
+        <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>
+    }
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <a href="/stylists/deleteall">Delete All Stylists</a>
+    </div>
+</div>

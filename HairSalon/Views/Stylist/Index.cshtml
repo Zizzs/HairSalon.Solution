@@ -10,16 +10,4 @@
     <!--<p><a href="/stylists/search">Search for stylists or clients.</a></p> Broken Search Method, Commenting out due to lack of time.-->
     <br>
     <hr>
-    <br>
-    <h3>Current Stylists:</h3>
-    @foreach(StylistClass stylist in @Model["stylists"])
-    {
-        <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>
-    }
-    <br>
-    <h3>Current Clients:</h3>
-    @foreach(ClientClass client in @Model["clients"])
-    {
-        <p><a href="/stylists/clients/@client.GetId()">@client.GetName()</a> - (Stylist: @StylistClass.FindById(@client.GetStylistId())[0].GetName()) - <a href="/stylists/clients/@client.GetId()/delete">Delete Client</a></p>
-    }
 </div>

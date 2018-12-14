@@ -5,13 +5,16 @@
 
 <div class="container">
     <h3>Hair Salon</h3>
-    <h2>@Model["stylists"][0].GetName()</h2>
-    <a class="deleteLink" href='/stylists/@Model["stylists"][0].GetId()/delete'>Delete this Stylist(And the Stylist's Clients)</a>
+    <h2>@Model["stylists"].GetName()</h2>
+    <a class="deleteLink" href='/stylists/@Model["stylists"].GetId()/edit'>Edit the Stylist</a><br>
+    <br>
+    <a class="deleteLink" href='/stylists/@Model["stylists"].GetId()/delete'>Delete this Stylist(And the Stylist's Clients)</a>
     <h3>Current Clients:</h3>
     @foreach(ClientClass client in @Model["clients"])
     {
         <p><a href="/stylists/clients/@client.GetId()">@client.GetName()</a></p>
     }
     <br>
-    <a href="/stylists">Home Page</a>
+    <hr>
+    <a href="/stylists/showall">Back</a><br>
 </div>
