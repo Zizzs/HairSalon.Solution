@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using HairSalon.Models;
+using System.IO;
  
 namespace HairSalon.Tests
 {
@@ -272,6 +273,24 @@ namespace HairSalon.Tests
 
             //Assert
            CollectionAssert.AreEqual(tempList, tempListThree);
+        }
+
+        [TestMethod]
+        public void Update_EditsStylistName_String()
+        {
+            //Arrange
+            string name = "Jimmy";
+            string nameTwo = "Jimbo";
+
+            //Act
+            StylistClass.Save(name);
+            StylistClass jimmy = StylistClass.FindByName(name);
+            int id = jimmy.GetId();
+            StylistClass.UpdateName(id, nameTwo);
+            StylistClass jimbo = StylistClass.FindById(id);
+            string nameThree = jimbo.GetName();
+            //Assert
+           Assert.AreEqual(nameTwo, nameThree);
         }
     }
 }
