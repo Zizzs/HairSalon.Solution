@@ -50,6 +50,7 @@ namespace HairSalon.Controllers
         public ActionResult Delete(int id)
         {
             ClientClass.DeleteClientsByStylistId(id);
+            SpecialityClass.DeleteSpecialitysByStylistId(id);
             StylistClass.Delete(id);
             return View();
         }
@@ -57,6 +58,12 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/deleteall")]
         public ActionResult DeleteAll()
         {
+            List<StylistClass> stylists = StylistClass.GetAll();
+            foreach(StylistClass stylist in stylists)
+            {
+                int id = stylist.GetId();
+                SpecialityClass.DeleteSpecialitysByStylistId(id);
+            }
             StylistClass.ClearAll();
             return RedirectToAction("ShowAll");
         }
